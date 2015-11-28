@@ -14,6 +14,7 @@ Clock.prototype.printTime = function () {
 };
 
 Clock.prototype._tick = function () {
+  // this.currentDate.setSeconds(this.currentDate.getSeconds() + 1);
   this.seconds += 1;
   if (this.seconds === 60) {
     this.minutes += 1;
@@ -79,13 +80,13 @@ var reader = readline.createInterface({
 function askIfGreaterThan(el1, el2, callback) {
   // Prompt user to tell us whether el1 > el2; pass true back to the
   // callback if true; else false.
-  reader.question("Is " + el1 + " greater than " + el2 +
-      "? ", function(answer) {
+  var prompt = "Is " + el1 + " greater than " + el2 + "? ";
+  reader.question(prompt, function(answer) {
     if (answer === "yes") {
-      return callback(true);
+      callback(true);
     }
     else if (answer === "no") {
-      return callback(false);
+      callback(false);
     }
   });
 }
@@ -128,7 +129,6 @@ function absurdBubbleSort(arr, sortCompletionCallback) {
     if (madeAnySwaps) {
       innerBubbleSortLoop(arr, 0, madeAnySwaps, outerBubbleSortLoop);
     } else {
-
       sortCompletionCallback(arr);
     }
   }
